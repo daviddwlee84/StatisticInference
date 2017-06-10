@@ -1,6 +1,7 @@
 # Hypothesis Testing
 
 source("PValueCriticalRegion.R")
+source("PlotDiagram.R")
 
 
 alpha = as.numeric(readline("Significance level(in %): "))
@@ -18,6 +19,8 @@ if(dist == 1){
 		x = as.numeric(readline("Observed x: "))
 		N = as.numeric(readline("Total random surveys: "))
 
+		expx = as.integer(p*N) # Expected X
+
 		if(x >= N*p){
 			pvalue = 2*(pbinom(x-1, N, p, lower.tail = FALSE))
 		}
@@ -25,24 +28,30 @@ if(dist == 1){
 			pvalue = 2*(pbinom(x, N, p))
 		}
 		PValue(pvalue, alpha)
+		switch(readline("Plot(y/n)? "), y={HTPlotBPV(expx, N, p, x)})
 	}
 	if(func == 2){  # Haven't test yet #TODO: type 1 & 2 error
-		ph0 = as.numeric(readline("Hypothesis 0 of population proportion: "))
+		p = as.numeric(readline("Hypothesis 0 of population proportion: "))
 		N = as.numeric(readline("Total random surveys: "))
 		whatTail = PH1(ph0, 1)
+
+		expx = as.integer(p*N) # Expected X
+		
 		if(whatTail == -1){
 			c = qbinom(alpha, N, ph0)
-			cat(sprintf("Critical Region is C = {X <= %d}", c)) 
+			cat(sprintf("Critical Region is C = {X <= %d}\n", c)) 
 		}
 		if(whatTail == 0){
 			c1 = qbinom(alpha/2, N, ph0)
 			c2 = qbinom(1-alpha/2, N, ph0)
-			cat(sprintf("Critical Region is C = {X <= %d or X >= %d}", c1, c2)) 
+			cat(sprintf("Critical Region is C = {X <= %d or X >= %d}\n", c1, c2))
+			c = c(c1, c2)
 		}
 		if(whatTail == 1){
 			c = qbinom(1-alpha, N, ph0)
-			cat(sprintf("Critical Region is C = {X >= %d}", c)) 
+			cat(sprintf("Critical Region is C = {X >= %d}\n", c)) 
 		}
+		switch(readline("Plot(y/n)? "), y={HTPlotBCR(expx, N, p, c, whatTail)})
 	}
 
 
