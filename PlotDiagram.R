@@ -6,12 +6,17 @@
 # Binomial Distribution
 # P-value
 # obsv is the observed x; expx is the expected x
-HTPlotBPV <- function(expx, size, prob, obsx) {
+HTPlotBPV <- function(expx, size, prob, obsx, pvalue) {
 	x = seq(0, size)
 	hx = dbinom(x, size, prob)
 	df <- data.frame(stolpec1 = hx)
 	df.bar <- barplot(df$stolpec1)
-	barplot(df$stolpec1, xlim=c(0, size), ylim=c(-max(hx)/4, max(hx)), names.arg=x, main="Binomial Distribution")
+
+	## Create a vector of colors selected based on whether x is <obsx or >obsx  
+	## (FALSE + 1 -> 1 -> "gray";    TRUE + 1 -> 2 -> "blue")
+	cols = c("gray", "blue")[(x > obsx) + 1]
+
+	barplot(df$stolpec1, col=cols, xlim=c(0, size), ylim=c(-max(hx)/4, max(hx)), names.arg=x, main="Binomial Distribution")
 	points(df.bar[obsx+1], 0, pch=4, col="blue", cex=3, lwd=2.5)
 	text(df.bar[obsx+1], -max(hx)/6, sprintf("Observed %d", obsx), col="blue", cex=1.)
 	points(df.bar[expx+1], 0, pch=17, col="darkgreen", cex=3, lwd=2.5)
