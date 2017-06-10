@@ -1,7 +1,7 @@
 # Statistic Inference
 
 ## Brief Description
-###Functions
+### Functions
 * Hypothesis Testing
 	* p-value
 	* Critical Region
@@ -23,12 +23,12 @@ Ps. Don't use RScript to open it. Because it will cause the non-interactively er
 
 ## Todo and Progress
 ### Hypothesis Testing
-* <h5> Binomial Distribution
-	- [X] Population Proportion (p-value & Critical Region)
-* <h5> Negative-binomial Distribution
-* <h5> Normal Distribution
-* <h5> Chi-square Distribution
-* <h5> T Distribution
+#### Binomial Distribution
+- [X] Population Proportion (p-value & Critical Region)
+#### Negative-binomial Distribution
+#### Normal Distribution
+#### Chi-square Distribution
+#### T Distribution
 
 ### Interval Estimating
 
