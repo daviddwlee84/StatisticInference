@@ -74,10 +74,18 @@ HTPlotBCR <- function(expx, size, prob, c, whatTail) {
 TFHPlotMPV <- function(n, Q, df){
 	x = rchisq(n, df)
 	hx = dchisq(x, df)
-
-	cols = c("gray", "blue")[(x > Q) + 1]
 	
-	hist(x, col=cols, prob=TRUE, main=paste("Histogram of Q and chi-square with degree of freedom of ",df))
+	h <- hist(x, plot=FALSE)
+	cuts <- cut(h$breaks, c(-Inf, Q, Inf))
+	cols = c("gray", "blue")[cuts]
+	# force to plot in density (probability)
+	# h$counts=h$counts/sum(h$counts) # <= bad method
+	h$counts=h$density
+	plot(h, col=cols, main=paste("Histogram of Q and chi-square with degree of freedom of ",df), ylab="Density")
+	
+	# useless 
+	# hist(x, col=c("gray", "blue")[cut(h$breaks, c(-Inf, Q, Inf))], prob=TRUE, main=paste("Histogram of Q and chi-square with degree of freedom of ",df))	
+
 	curve(dchisq(x, df) , col='green', add=TRUE)
 	points(Q, 0, pch=4, col="darkgreen", cex=3, lwd=2.5)
 	text(Q, max(hx)/10, sprintf("Q = %f", Q), col="darkgreen", cex=1.)
@@ -95,3 +103,13 @@ TFHPlotMCR <- function(n, Q, df, c){
 	text(Q, max(hx)/10, sprintf("Q = %f", Q), col="blue", cex=1.)
 
 }
+
+
+
+
+
+
+
+
+
+

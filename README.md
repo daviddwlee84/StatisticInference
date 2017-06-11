@@ -64,7 +64,7 @@ Ps. Don't use RScript to open it. Because it will cause the non-interactively er
 ### Goodness of Fit Testing
 ### Testing for Homogenity
 -	[X] M die with K cells have commmon cell probabilities (Critical Region & p-value)
-- [X] Plot Function (Critical Region & p-value(color bug))
+- [X] Plot Function (Critical Region & p-value)
 
 ### Testing for Independence
 
