@@ -60,3 +60,23 @@ HTPlotBCR <- function(expx, size, prob, c, whatTail) {
 
 
 # Interval Estimating
+
+
+
+
+
+
+
+
+# Testing For Homogeneity
+TFHPlotMCR <- function(n, Q, df, c){
+	x = rchisq(n, df)
+	hx = dchisq(x, df)
+	hist(x, prob=TRUE, main=paste("Histogram of Q and chi-square with degree of freedom of ",df))
+	curve(dchisq(x, df) , col='green', add=TRUE)
+	points(c, 0, pch=4, col="red", cex=3, lwd=2.5)
+	text(c, max(hx)/8, sprintf("c = %f", c), col="red", cex=1.)
+	points(Q, 0, pch=4, col="blue", cex=3, lwd=2.5)
+	text(Q, max(hx)/10, sprintf("Q = %f", Q), col="blue", cex=1.)
+
+}

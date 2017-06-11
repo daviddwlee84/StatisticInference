@@ -27,6 +27,11 @@
 	* X tagged in N random survey
 		* p-value : *HT\_BINOM\_XTAG\_PV(alpha)* 
 		* Critical Region : *HT\_BINOM\_XTAG\_CR(alpha)*
+* **HomogeneityFunctions.R**
+	* M die with K cells have commmon cell probabilities
+		* *TFH\_MULTINOM\_KCELL(alpha, M, K)*
+		
+		
 * **PValueCriticalRegion.R**
 	* *PValue(pvalue, alpha)* ⎯⎯ p-value inference function
 	* *PH1(ph0, DRorNot)* ⎯⎯ hypothesis 1 parser
@@ -58,6 +63,9 @@ Ps. Don't use RScript to open it. Because it will cause the non-interactively er
 
 ### Goodness of Fit Testing
 ### Testing for Homogenity
+-	[X] M die with K cells have commmon cell probabilities (Critical Region)
+- [X] Plot Function (Critical Region)
+
 ### Testing for Independence
 
 
