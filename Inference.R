@@ -1,4 +1,4 @@
-# main parser
+# Main Parser
 
 inf <- menu(c("Hypothesis Testing", "Interval Estimating", "Goodness of Fit Testing", "Testing for Homogeneity", "Testing for Independence"), title="Choose an inference you want to do:")
 

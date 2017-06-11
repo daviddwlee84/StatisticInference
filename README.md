@@ -23,9 +23,13 @@
 * **RestingForIndependence.R**
 
 #### Function Supporter
+* **HypothesisTestingFunctions.R**
+	* X tagged in N random survey
+		* p-value : *HT\_BINOM\_XTAG\_PV(alpha)* 
+		* Critical Region : *HT\_BINOM\_XTAG\_CR(alpha)*
 * **PValueCriticalRegion.R**
-	* *PValue(pvalue, alpha)* : p-value inference function
-	* *PH1(ph0, DRorNot)*: hypothesis 1 parser
+	* *PValue(pvalue, alpha)* ⎯⎯ p-value inference function
+	* *PH1(ph0, DRorNot)* ⎯⎯ hypothesis 1 parser
 * **PlotDiagram.R**
 
 ## Environment Setup

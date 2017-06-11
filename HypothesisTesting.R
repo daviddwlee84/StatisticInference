@@ -1,7 +1,8 @@
-# Hypothesis Testing
+# Hypothesis Testing Parser
 
 source("PValueCriticalRegion.R")
 source("PlotDiagram.R")
+source("HypothesisTestingFunctions.R")
 
 
 alpha = as.numeric(readline("Significance level(in %): "))
@@ -14,44 +15,13 @@ dist = menu(c("Binomial Distribution", "Negative-binomial Distribution"), title=
 if(dist == 1){
 	sce <- menu(c("X tagged in N random survey"), title="Select the scenario of Sample Statistic")
 
-	if(func == 1){
-		p = as.numeric(readline("Hypothesis of population proportion: "))
-		x = as.numeric(readline("Observed x: "))
-		N = as.numeric(readline("Total random surveys: "))
-
-		expx = as.integer(p*N) # Expected X
-
-		if(x >= N*p){
-			pvalue = 2*(pbinom(x-1, N, p, lower.tail = FALSE))
+	if(sce == 1){
+		if(func == 1){
+			HT_BINOM_XTAG_PV(alpha)
 		}
-		else{
-			pvalue = 2*(pbinom(x, N, p))
+		if(func == 2){  
+			HT_BINOM_XTAG_CR(alpha)
 		}
-		PValue(pvalue, alpha)
-		switch(readline("Plot(y/n)? "), y={HTPlotBPV(expx, N, p, x)})
-	}
-	if(func == 2){  # Haven't test yet #TODO: type 1 & 2 error
-		p = as.numeric(readline("Hypothesis 0 of population proportion: "))
-		N = as.numeric(readline("Total random surveys: "))
-		whatTail = PH1(ph0, 1)
-
-		expx = as.integer(p*N) # Expected X
-		
-		if(whatTail == -1){
-			c = qbinom(alpha, N, ph0)
-			cat(sprintf("Critical Region is C = {X <= %d}\n", c)) 
-		}
-		if(whatTail == 0){
-			c1 = qbinom(alpha/2, N, ph0)
-			c2 = qbinom(1-alpha/2, N, ph0)
-			cat(sprintf("Critical Region is C = {X <= %d or X >= %d}\n", c1, c2))
-			c = c(c1, c2)
-		}
-		if(whatTail == 1){
-			c = qbinom(1-alpha, N, ph0)
-			cat(sprintf("Critical Region is C = {X >= %d}\n", c)) 
-		}
-		switch(readline("Plot(y/n)? "), y={HTPlotBCR(expx, N, p, c, whatTail)})
 	}
 
 

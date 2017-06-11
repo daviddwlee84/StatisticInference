@@ -14,7 +14,13 @@ HTPlotBPV <- function(expx, size, prob, obsx, pvalue) {
 
 	## Create a vector of colors selected based on whether x is <obsx or >obsx  
 	## (FALSE + 1 -> 1 -> "gray";    TRUE + 1 -> 2 -> "blue")
-	cols = c("gray", "blue")[(x > obsx) + 1]
+	if(obsx > expx){
+		cols = c("gray", "blue")[(x > obsx) + 1]
+	}
+	else{
+		cols = c("gray", "blue")[(x < obsx) + 1]
+	}
+	
 
 	barplot(df$stolpec1, col=cols, xlim=c(0, size), ylim=c(-max(hx)/4, max(hx)), names.arg=x, main="Binomial Distribution")
 	points(df.bar[obsx+1], 0, pch=4, col="blue", cex=3, lwd=2.5)
