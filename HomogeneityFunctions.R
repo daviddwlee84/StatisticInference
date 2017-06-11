@@ -1,6 +1,7 @@
 # Testing For Homogeneity Functions
 
 source("PlotDiagram.R")
+source("PValueCriticalRegion.R")
 
 # Statistics Notes
 # Testing For Homogenneity:
@@ -52,7 +53,9 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 	func = menu(c("p-value", "Critical Region"), title="Select inference you want to make")
 
 	if(func == 1){ # p-value
-
+		pvalue = pchisq(Q, df, lower.tail=FALSE)
+		PValue(pvalue, alpha)
+		switch(readline("Plot(y/n)? "), y={TFHPlotMPV(sum(n), Q, df)})
 	}
 	if(func == 2){ # Critical Region
 		c = qchisq(1-alpha, df)
@@ -65,8 +68,4 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 		}
 		switch(readline("Plot(y/n)? "), y={TFHPlotMCR(sum(n), Q, df, c)})
 	}
-
-
-	
-
 }

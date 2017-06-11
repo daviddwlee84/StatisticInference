@@ -69,6 +69,21 @@ HTPlotBCR <- function(expx, size, prob, c, whatTail) {
 
 
 # Testing For Homogeneity
+# P-value
+# TODO: Color is incorrect and need to be fixed
+TFHPlotMPV <- function(n, Q, df){
+	x = rchisq(n, df)
+	hx = dchisq(x, df)
+
+	cols = c("gray", "blue")[(x > Q) + 1]
+	
+	hist(x, col=cols, prob=TRUE, main=paste("Histogram of Q and chi-square with degree of freedom of ",df))
+	curve(dchisq(x, df) , col='green', add=TRUE)
+	points(Q, 0, pch=4, col="darkgreen", cex=3, lwd=2.5)
+	text(Q, max(hx)/10, sprintf("Q = %f", Q), col="darkgreen", cex=1.)
+}
+
+# Critical Region
 TFHPlotMCR <- function(n, Q, df, c){
 	x = rchisq(n, df)
 	hx = dchisq(x, df)

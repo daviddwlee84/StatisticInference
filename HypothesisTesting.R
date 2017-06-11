@@ -1,7 +1,5 @@
 # Hypothesis Testing Parser
 
-source("PValueCriticalRegion.R")
-source("PlotDiagram.R")
 source("HypothesisTestingFunctions.R")
 
 

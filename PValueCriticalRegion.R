@@ -4,11 +4,11 @@
 # return 1 means reject; return 0 means accept
 PValue <- function(pvalue, alpha) {
 	if(pvalue <= alpha){
-		cat("Because p-value = ", pvalue, " < alpha = ", alpha, ". So we should reject the Hypothesis", "\n")
+		cat("Because p-value =", pvalue, "< significance level =", alpha, "%. \nSo we should reject the Hypothesis", "\n")
 		return(1)
 	}
 	else{
-		cat("Since p-value = ", pvalue, " > alpha = ", alpha, ". And therefore fail to reject the Hypothesis", "\n")
+		cat("Since p-value =", pvalue, "> significance level =", alpha, "%. \nAnd therefore fail to reject the Hypothesis", "\n")
 		return(0)
 	}
 }

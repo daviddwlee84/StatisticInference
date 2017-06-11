@@ -63,13 +63,13 @@ Ps. Don't use RScript to open it. Because it will cause the non-interactively er
 
 ### Goodness of Fit Testing
 ### Testing for Homogenity
--	[X] M die with K cells have commmon cell probabilities (Critical Region)
-- [X] Plot Function (Critical Region)
+-	[X] M die with K cells have commmon cell probabilities (Critical Region & p-value)
+- [X] Plot Function (Critical Region & p-value(color bug))
 
 ### Testing for Independence
 
 
 ## Notes
 ### R Language
-* Input variable as number `as.numberic(readline("prompt")`
+* Input variable as number `as.numberic(readline("prompt"))`
 * Print variable value in a string e.g. `cat("Hello", variable, "\n")` `cat(sprintf("Result = %f", res))`
