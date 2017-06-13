@@ -33,14 +33,18 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 	n <- array(NA, dim=M)
 	n = colSums(sample)
 
+	cat("Total samples =", sum(sample), "\n")
+
 	p <- array(NA, dim=K)
 	# estimating pj as p1j, p2j, .....
 	for(row in seq(K)){
-		p[row] = rowSums(sample)[row]/sum(n)
+		p[row] = f[row]/sum(n)
+		cat(sprintf("Estimated p for face %d = %f = %d/%d\n", row, p[row], f[row], sum(n)))
 	}
 
 	# Degree of Freedom
 	df = (M*K-M) - (K-1)
+	cat(sprintf("Degree of Freedom is %d = (%d * %d - %d) - (%d - 1)\n", df, M, K, M, K))
 	
 	# Calculating Statistic Q under H0
 	Q <- 0
