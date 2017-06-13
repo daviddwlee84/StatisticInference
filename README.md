@@ -31,6 +31,9 @@
 	* M die with K cells have commmon cell probabilities
 		* *TFH\_MULTINOM\_KCELL(alpha, M, K)*
 		
+* **IndependenceFunctions.R**
+	* Compare attribute A and B (one multinomial distribution with a*b cells)
+		* *TFI\_MULTINOM\_abCELL(alpha, a, b)*
 		
 * **PValueCriticalRegion.R**
 	* *PValue(pvalue, alpha)* ⎯⎯ p-value inference function
@@ -63,13 +66,14 @@ Ps. Don't use RScript to open it. Because it will cause the non-interactively er
 
 ### Goodness of Fit Testing
 ### Testing for Homogenity
--	[X] M die with K cells have commmon cell probabilities (Critical Region & p-value)
+- [X] M die with K cells have commmon cell probabilities (Critical Region & p-value)
 - [X] Plot Function (Critical Region & p-value)
 
 ### Testing for Independence
-
+- [X] Compare attribute A and B (p-value & Critical Region)
+- [X] Plot Function (Using same function of Testing for Homogenity)
 
 ## Notes
 ### R Language
 * Input variable as number `as.numberic(readline("prompt"))`
-* Print variable value in a string e.g. `cat("Hello", variable, "\n")` `cat(sprintf("Result = %f", res))`
+* Print variable value in a string e.g. `cat("Hello", variable, "\n")` `cat(sprintf("Result = %f", res))` `print(paste("Hello", "World", sep=""))`

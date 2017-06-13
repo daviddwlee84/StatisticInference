@@ -68,7 +68,7 @@ HTPlotBCR <- function(expx, size, prob, c, whatTail) {
 
 
 
-# Testing For Homogeneity
+# Testing For Homogeneity (share with Testing for Independence)
 # P-value
 TFHPlotMPV <- function(n, Q, df){
 	x = rchisq(n, df)

@@ -48,12 +48,10 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 		else colname = c(colname, sprintf("die%d", col))
 	}
 	colname = c(colname, "Total")
-
 	sampleMat[1:K, 1:M] = sample
 	sampleMat[K+1, 1:M] = n
 	sampleMat[1:K, M+1] = f
 	sampleMat[K+1, M+1] = total_sample
-
 	row.names(sampleMat) = rowname
 	colnames(sampleMat) = colname
 	print(sampleMat)
@@ -69,7 +67,7 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 
 	# Degree of Freedom
 	df = (M*K-M) - (K-1)
-	cat(sprintf("Degree of Freedom is %d = (%d * %d - %d) - (%d - 1)\n", df, M, K, M, K))
+	cat(sprintf("Degree of Freedom is %d = (M * K - M) - (K - 1)\n", df))
 	
 	# Calculating Statistic Q under H0
 	Q <- 0
@@ -90,7 +88,7 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 		c = qchisq(1-alpha, df)
 		cat(sprintf("Critical Region is C = {Q >= %f}\n", c))
 		if(Q >= c){
-			cat(sprintf("Reject at %.2f %% significance level since Qhat = %f is in C\n", alpha, Q))
+			cat(sprintf("Reject at %.2f%% significance level since Qhat = %f is in C\n", alpha, Q))
 		}
 		else{
 			cat(sprintf("Do not reject at %.2f%% significance level since Qhat = %f is not in C\n", alpha, Q))
