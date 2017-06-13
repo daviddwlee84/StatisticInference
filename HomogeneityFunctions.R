@@ -33,6 +33,18 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 	n <- array(NA, dim=M)
 	n = colSums(sample)
 
+	for(row in seq(K)){
+		if(row == 1) rowname = sprintf("face%d", 1)
+		else rowname = c(rowname, sprintf("face%d", row))
+	}
+	for(col in seq(M)){
+		if(col == 1) colname = sprintf("die%d", 1)
+		else colname = c(colname, sprintf("die%d", col))
+	}
+	row.names(sample) = rowname
+	colnames(sample) = colname
+	print(sample)
+
 	cat("Total samples =", sum(sample), "\n")
 
 	p <- array(NA, dim=K)
