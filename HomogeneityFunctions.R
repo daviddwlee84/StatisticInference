@@ -33,25 +33,38 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 	n <- array(NA, dim=M)
 	n = colSums(sample)
 
+	# total sample
+	total_sample = sum(sample)
+
+	# Showing sample
+	sampleMat <- matrix(NA, nrow=K+1, ncol=M+1)
 	for(row in seq(K)){
 		if(row == 1) rowname = sprintf("face%d", 1)
 		else rowname = c(rowname, sprintf("face%d", row))
 	}
+	rowname = c(rowname, "Total")
 	for(col in seq(M)){
 		if(col == 1) colname = sprintf("die%d", 1)
 		else colname = c(colname, sprintf("die%d", col))
 	}
-	row.names(sample) = rowname
-	colnames(sample) = colname
-	print(sample)
+	colname = c(colname, "Total")
 
-	cat("Total samples =", sum(sample), "\n")
+	sampleMat[1:K, 1:M] = sample
+	sampleMat[K+1, 1:M] = n
+	sampleMat[1:K, M+1] = f
+	sampleMat[K+1, M+1] = total_sample
+
+	row.names(sampleMat) = rowname
+	colnames(sampleMat) = colname
+	print(sampleMat)
+
+	cat("Total samples =", total_sample, "\n")
 
 	p <- array(NA, dim=K)
 	# estimating pj as p1j, p2j, .....
 	for(row in seq(K)){
-		p[row] = f[row]/sum(n)
-		cat(sprintf("Estimated p for face %d = %f = %d/%d\n", row, p[row], f[row], sum(n)))
+		p[row] = f[row]/total_sample
+		cat(sprintf("Estimated p for face %d = %f = %d/%d\n", row, p[row], f[row], total_sample))
 	}
 
 	# Degree of Freedom
@@ -71,7 +84,7 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 	if(func == 1){ # p-value
 		pvalue = pchisq(Q, df, lower.tail=FALSE)
 		PValue(pvalue, alpha)
-		switch(readline("Plot(y/n)? "), y={TFHPlotMPV(sum(n), Q, df)})
+		switch(readline("Plot(y/n)? "), y={TFHPlotMPV(total_sample, Q, df)})
 	}
 	if(func == 2){ # Critical Region
 		c = qchisq(1-alpha, df)
@@ -82,6 +95,6 @@ TFH_MULTINOM_KCELL <- function(alpha, M, K){
 		else{
 			cat(sprintf("Do not reject at %.2f%% significance level since Qhat = %f is not in C\n", alpha, Q))
 		}
-		switch(readline("Plot(y/n)? "), y={TFHPlotMCR(sum(n), Q, df, c)})
+		switch(readline("Plot(y/n)? "), y={TFHPlotMCR(total_sample, Q, df, c)})
 	}
 }
