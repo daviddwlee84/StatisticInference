@@ -68,9 +68,10 @@ HTPlotBCR <- function(expx, size, prob, c, whatTail) {
 
 
 
-# Testing For Homogeneity (share with Testing for Independence)
+# Chi-square Destribution
+# Used by Testing For Homogeneity, Testing for Independence, GoodnessOfFit
 # P-value
-TFHPlotMPV <- function(n, Q, df){
+ChiSquPlotPV <- function(n, Q, df){ # n: total sample
 	x = rchisq(n, df)
 	hx = dchisq(x, df)
 	
@@ -87,19 +88,18 @@ TFHPlotMPV <- function(n, Q, df){
 
 	curve(dchisq(x, df) , col='green', add=TRUE)
 	points(Q, 0, pch=4, col="darkgreen", cex=3, lwd=2.5)
-	text(Q, 0.05, sprintf("Q = %f", Q), col="darkgreen", cex=1.)
+	text(Q, max(h$density)/10, sprintf("Q = %f", Q), col="darkgreen", cex=1.)
 }
-
 # Critical Region
-TFHPlotMCR <- function(n, Q, df, c){
+ChiSquPlotCR <- function(n, Q, df, c){
 	x = rchisq(n, df)
 	hx = dchisq(x, df)
-	hist(x, prob=TRUE, main=paste("Histogram of Q and chi-square with degree of freedom of ",df))
+	h <- hist(x, prob=TRUE, main=paste("Histogram of Q and chi-square with degree of freedom of ",df))
 	curve(dchisq(x, df) , col='green', add=TRUE)
 	points(c, 0, pch=4, col="red", cex=3, lwd=2.5)
-	text(c, 0.1, sprintf("c = %f", c), col="red", cex=1.)
+	text(c, max(h$density)/8, sprintf("c = %f", c), col="red", cex=1.)
 	points(Q, 0, pch=4, col="blue", cex=3, lwd=2.5)
-	text(Q, 0.05, sprintf("Q = %f", Q), col="blue", cex=1.)
+	text(Q, max(h$density)/10, sprintf("Q = %f", Q), col="blue", cex=1.)
 
 }
 

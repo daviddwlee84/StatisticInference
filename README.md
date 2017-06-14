@@ -27,6 +27,11 @@
 	* X tagged in N random survey
 		* p-value : *HT\_BINOM\_XTAG\_PV(alpha)* 
 		* Critical Region : *HT\_BINOM\_XTAG\_CR(alpha)*
+
+* **GoodnessOfFitFunctions.R**
+	* Test if the die is fair with K faces
+		* *GOF\_MULTINOM\_DIE(alpha, K)*
+
 * **HomogeneityFunctions.R**
 	* M die with K cells have commmon cell probabilities
 		* *TFH\_MULTINOM\_KCELL(alpha, M, K)*
@@ -55,7 +60,6 @@ Ps. Don't use RScript to open it. Because it will cause the non-interactively er
 ### Hypothesis Testing
 #### Binomial Distribution
 - [X] Population Proportion (p-value & Critical Region)
-- [X] Plot Function (p-value & Critical Region)
 
 #### Negative-binomial Distribution
 #### Normal Distribution
@@ -65,13 +69,27 @@ Ps. Don't use RScript to open it. Because it will cause the non-interactively er
 ### Interval Estimating
 
 ### Goodness of Fit Testing
+- [X] Test if the die is fair with K faces (p-value & Critical Region)
+
 ### Testing for Homogenity
 - [X] M die with K cells have commmon cell probabilities (Critical Region & p-value)
-- [X] Plot Function (Critical Region & p-value)
+
 
 ### Testing for Independence
 - [X] Compare attribute A and B (p-value & Critical Region)
-- [X] Plot Function (Using same function of Testing for Homogenity)
+
+
+### Plot Functions
+- [X] Chi-square Distribution (p-value & Critical Region)
+	* Used by
+		* Goodness of Fit: Test if the die is fair with K faces
+		* Testing for Homogenity: M die with K cells have commmon cell probabilities
+		* Testing for Independence: Compare attribute A and B
+
+- [X] Binomial Distribution (p-value & Critical Region)
+	* Used by
+		* Hypothesis Testing: Population Proportion
+
 
 ## Notes
 ### R Language

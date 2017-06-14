@@ -75,7 +75,7 @@ TFI_MULTINOM_abCELL <- function(alpha, a, b){
 	if(func == 1){ # p-value
 		pvalue = pchisq(Q, df, lower.tail=FALSE)
 		PValue(pvalue, alpha)
-		switch(readline("Plot(y/n)? "), y={TFHPlotMPV(total_sample, Q, df)})
+		switch(readline("Plot(y/n)? "), y={ChiSquPlotPV(total_sample, Q, df)})
 	}
 	if(func == 2){ # Critical Region
 		c = qchisq(1-alpha, df)
@@ -86,7 +86,7 @@ TFI_MULTINOM_abCELL <- function(alpha, a, b){
 		else{
 			cat(sprintf("Do not reject at %.2f%% significance level since Qhat = %f is not in C\n", alpha, Q))
 		}
-		switch(readline("Plot(y/n)? "), y={TFHPlotMCR(total_sample, Q, df, c)})
+		switch(readline("Plot(y/n)? "), y={ChiSquPlotCR(total_sample, Q, df, c)})
 	}
 }
 
