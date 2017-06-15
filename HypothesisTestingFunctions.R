@@ -1,5 +1,7 @@
 # Hypothesis Testing Functions
 
+source("PValueCriticalRegion.R")
+
 ########################### Binomial ###########################
 
 # X tagged in N random survey
@@ -11,7 +13,7 @@ HT_BINOM_XTAG_PV <- function(alpha) {
 
 	expx = as.integer(p*N) # Expected X
 
-	if(x >= N*p){
+	if(x >= expx){
 		pvalue = 2*(pbinom(x-1, N, p, lower.tail = FALSE))
 	}
 	else{
@@ -44,4 +46,35 @@ HT_BINOM_XTAG_CR <- function(alpha) {
 		cat(sprintf("Critical Region is C = {X >= %d}\n", c)) 
 	}
 	switch(readline("Plot(y/n)? "), y={HTPlotBCR(expx, N, p, c, whatTail)})
+}
+
+
+########################### Hypergeometric ###########################
+
+# Randomly draw without replacement n fish and find Y with tag
+#=========== p-value =============#
+HT_HYPER_TOTAL_PV <- function(alpha) {
+	# Statistics Notes
+	# Sample Statistic Y: Randomly draw without replacement n fish and find Y fish with tags
+	# Inference: The total fish amount N
+
+	N = as.numeric(readline("Hypothesis 0 of total fish N: "))
+	k = as.numeric(readline("Total fish with tag: "))
+	n = as.numeric(readline("Randomly draw n fish: "))
+	y = as.numeric(readline("Found y fish with tag: "))
+
+
+	expx = as.integer((k/N)*n) # Expected X
+
+	if(y >= expx){
+		pvalue = 2*(phyper(y-1, k, N-k, n, lower.tail = FALSE))
+	}
+	else{
+		pvalue = 2*(pbinom(y, k, N-k, n))
+	}
+
+	PValue(pvalue, alpha)
+	switch(readline("Plot(y/n)? "), y={})
+
+
 }
