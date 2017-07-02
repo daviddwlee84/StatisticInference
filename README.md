@@ -1,14 +1,5 @@
 # Statistic Inference
 
-## Brief Description
-### Inferences
-* Hypothesis Testing
-	* p-value
-	* Critical Region
-* Interval Estimating
-* Goodness of Fit Testing
-* Testing for Homogenity
-* Testing for Independence
 
 ## Environment Setup
 [Download R (National Taiwan University Mirror)](http://cran.csie.ntu.edu.tw)
@@ -19,6 +10,16 @@ Either using R Console or type R in your command line.
 And then using `source("Inference.R")` to start the program.
 
 Ps. Don't use RScript to open it. Because it will cause the non-interactively error.
+
+## Brief Description
+### Inferences
+* Hypothesis Testing
+	* p-value
+	* Critical Region
+* Interval Estimating
+* Goodness of Fit Testing
+* Testing for Homogenity
+* Testing for Independence
 
 
 ### File Description
