@@ -10,6 +10,17 @@
 * Testing for Homogenity
 * Testing for Independence
 
+## Environment Setup
+[Download R (National Taiwan University Mirror)](http://cran.csie.ntu.edu.tw)
+
+## Usage
+Either using R Console or type R in your command line.
+
+And then using `source("Inference.R")` to start the program.
+
+Ps. Don't use RScript to open it. Because it will cause the non-interactively error.
+
+
 ### File Description
 
 #### Main Parser
@@ -44,16 +55,6 @@
 	* *PValue(pvalue, alpha)* ⎯⎯ p-value inference function
 	* *PH1(ph0, DRorNot)* ⎯⎯ hypothesis 1 parser
 * **PlotDiagram.R**
-
-## Environment Setup
-[Download R (National Taiwan University Mirror)](http://cran.csie.ntu.edu.tw)
-
-## Usage
-Either using R Console or type R in your command line.
-
-And then using `source("Inference.R")` to start the program.
-
-Ps. Don't use RScript to open it. Because it will cause the non-interactively error.
 
 
 ## Todo and Progress

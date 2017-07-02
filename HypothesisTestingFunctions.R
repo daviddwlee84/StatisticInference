@@ -1,5 +1,8 @@
 # Hypothesis Testing Functions
 
+source("PValueCriticalRegion.R")
+source("PlotDiagram.R")
+
 ########################### Binomial ###########################
 
 # X tagged in N random survey
